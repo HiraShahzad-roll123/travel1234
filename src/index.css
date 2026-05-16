@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:is(.dark *));
+
 @theme {
   --color-primary: #667eea;
   --color-secondary: #764ba2;
@@ -17,39 +19,23 @@
 }
 
 @layer base {
-  /* Base reset */
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg-color: #f4f6fc;
+    --text-color: #2d2d2d;
+    --card-bg: #ffffff;
+    --border-color: #e5e7eb;
+    --muted-color: #6b7280;
+  }
+
+  .dark {
+    --bg-color: #0f172a;
+    --text-color: #f8fafc;
+    --card-bg: #1e293b;
+    --border-color: #334155;
+    --muted-color: #94a3b8;
+  }
 
   body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    color: #2d2d2d;
-    background-color: #f4f6fc;
-  }
-}
-
-@layer components {
-  /* Divider pseudo-elements — not possible with pure Tailwind */
-  .divider::before,
-  .divider::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: #e5e7eb;
-  }
-
-  /* Pricing list checkmark — pseudo-element content */
-  .pricing-list li::before {
-    content: "✅ ";
-  }
-
-  /* Table row hover */
-  .data-table tr:hover td {
-    background-color: #f8f9ff;
-  }
-
-  /* Table last row no border */
-  .data-table tr:last-child td {
-    border-bottom: none;
+    @apply bg-[var(--bg-color)] text-[var(--text-color)] font-sans antialiased transition-colors duration-300;
   }
 }

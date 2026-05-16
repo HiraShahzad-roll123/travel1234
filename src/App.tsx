@@ -1,137 +1,47 @@
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-// Components - Ensure these files exist in src/components/...
+// Components
 import Header from "./components/Header/page";
 import Navbar from "./components/Navbar/page";
 import Footer from "./components/Footer/page";
+
+// Pages
+import Home from "./pages/Home/page";
 import Dashboard from "./pages/Dashboard/page";
 import Destinations from "./pages/Destinations/page";
 import Features from "./pages/Features/page";
 import Login from "./pages/Login/page";
-import Signup from "./pages/Signup/page";
+import Register from "./pages/Register/page";
+import Cart from "./pages/Cart/page";
+import Reviews from "./pages/Reviews/page";
+import About from "./pages/About/page";
+import Profile from "./pages/Profile/page";
 
 import "./index.css";
-
-// --- HOME COMPONENT (Defined locally so you don't need a separate file) ---
-function Home() {
-  return (
-    <main className="w-full max-w-[1200px] mx-auto py-12 px-8">
-      {/* Hero Section */}
-      <div className="bg-gradient-to-br from-primary to-secondary text-white py-16 px-10 rounded-[10px] text-center mb-14">
-        <h2 className="text-3xl mb-4 font-bold">🌍 Explore the World with WanderLog</h2>
-        <p className="text-lg opacity-90 max-w-[600px] mx-auto mb-8">Your ultimate travel companion for discovering hidden gems and sharing unforgettable experiences.</p>
-        <Link to="/destinations" className="bg-transparent border-2 border-white text-white cursor-pointer rounded-md transition-all duration-300 no-underline inline-block font-semibold text-center py-3.5 px-8 text-lg hover:bg-white hover:text-primary">View Destination Details</Link>
-      </div>
-
-      {/* Stats Section */}
-      <div className="flex flex-wrap gap-8 justify-center my-12">
-        <div className="bg-white rounded-[10px] py-8 px-10 text-center min-w-[180px] flex-1 shadow-[0_4px_20px_rgba(102,126,234,0.12)] border-t-4 border-primary">
-          <div className="text-3xl font-bold text-primary block">120+</div>
-          <div className="text-text-muted text-sm mt-2">Destinations Listed</div>
-        </div>
-        <div className="bg-white rounded-[10px] py-8 px-10 text-center min-w-[180px] flex-1 shadow-[0_4px_20px_rgba(102,126,234,0.12)] border-t-4 border-primary">
-          <div className="text-3xl font-bold text-primary block">5,400</div>
-          <div className="text-text-muted text-sm mt-2">Happy Travelers</div>
-        </div>
-        <div className="bg-white rounded-[10px] py-8 px-10 text-center min-w-[180px] flex-1 shadow-[0_4px_20px_rgba(102,126,234,0.12)] border-t-4 border-primary">
-          <div className="text-3xl font-bold text-primary block">320</div>
-          <div className="text-text-muted text-sm mt-2">Blog Posts</div>
-        </div>
-        <div className="bg-white rounded-[10px] py-8 px-10 text-center min-w-[180px] flex-1 shadow-[0_4px_20px_rgba(102,126,234,0.12)] border-t-4 border-primary">
-          <div className="text-3xl font-bold text-primary block">98%</div>
-          <div className="text-text-muted text-sm mt-2">Satisfaction Rate</div>
-        </div>
-      </div>
-
-      {/* Featured Section */}
-      <div className="text-center mt-14 mb-8">
-        <h2 className="text-[1.8rem] text-secondary mb-2 font-bold">Featured Destinations</h2>
-        <p className="text-text-muted text-base">Top picks from our travel experts for this season</p>
-      </div>
-
-      <section className="flex justify-center flex-wrap gap-10 mt-8">
-        {/* Card 1 */}
-        <article className="bg-white rounded-[10px] shadow-[0_4px_20px_rgba(102,126,234,0.12)] w-80 overflow-hidden transition-all duration-300 border-2 border-transparent hover:-translate-y-1.5 hover:shadow-[0_12px_30px_rgba(102,126,234,0.22)] hover:border-primary">
-          <img src="/images/image4.png" alt="Hunza Valley" className="w-full h-[200px] object-cover block bg-gradient-to-br from-primary to-secondary" />
-          <div className="p-6">
-            <span className="bg-gradient-to-br from-primary to-secondary text-white py-[3px] px-2.5 rounded-full text-[0.72rem] font-bold tracking-wide inline-block mb-3">NORTH</span>
-            <h3 className="text-[1.15rem] mb-2 text-text-main font-semibold">Explore the North — Hunza</h3>
-            <p className="text-text-muted text-[0.9rem] mb-5">Towering peaks and ancient forts. Hunza Valley is Pakistan's crown jewel.</p>
-            <Link to="/destinations" className="bg-gradient-to-br from-primary to-secondary text-white cursor-pointer border-none rounded-md transition-all duration-300 no-underline inline-block font-semibold text-center py-[7px] px-4 text-[0.85rem] hover:opacity-88 hover:-translate-y-px">View Details</Link>
-          </div>
-        </article>
-
-        {/* Card 2 */}
-        <article className="bg-white rounded-[10px] shadow-[0_4px_20px_rgba(102,126,234,0.12)] w-80 overflow-hidden transition-all duration-300 border-2 border-transparent hover:-translate-y-1.5 hover:shadow-[0_12px_30px_rgba(102,126,234,0.22)] hover:border-primary">
-          <img src="/images/image5.png" alt="Skardu Valley" className="w-full h-[200px] object-cover block bg-gradient-to-br from-primary to-secondary" />
-          <div className="p-6">
-            <span className="bg-gradient-to-br from-primary to-secondary text-white py-[3px] px-2.5 rounded-full text-[0.72rem] font-bold tracking-wide inline-block mb-3">MOUNTAIN</span>
-            <h3 className="text-[1.15rem] mb-2 text-text-main font-semibold">Beauty of Skardu Valley</h3>
-            <p className="text-text-muted text-[0.9rem] mb-5">Gateway to K2. Crystal-clear lakes and breathtaking landscapes.</p>
-            <Link to="/destinations" className="bg-gradient-to-br from-primary to-secondary text-white cursor-pointer border-none rounded-md transition-all duration-300 no-underline inline-block font-semibold text-center py-[7px] px-4 text-[0.85rem] hover:opacity-88 hover:-translate-y-px">View Details</Link>
-          </div>
-        </article>
-
-        {/* Card 3 */}
-        <article className="bg-white rounded-[10px] shadow-[0_4px_20px_rgba(102,126,234,0.12)] w-80 overflow-hidden transition-all duration-300 border-2 border-transparent hover:-translate-y-1.5 hover:shadow-[0_12px_30px_rgba(102,126,234,0.22)] hover:border-primary">
-          <img src="/images/image6.png" alt="Swat Valley" className="w-full h-[200px] object-cover block bg-gradient-to-br from-primary to-secondary" />
-          <div className="p-6">
-            <span className="bg-gradient-to-br from-primary to-secondary text-white py-[3px] px-2.5 rounded-full text-[0.72rem] font-bold tracking-wide inline-block mb-3">VALLEY</span>
-            <h3 className="text-[1.15rem] mb-2 text-text-main font-semibold">Magical Valley of Swat</h3>
-            <p className="text-text-muted text-[0.9rem] mb-5">Emerald rivers and lush green meadows. The Switzerland of Pakistan.</p>
-            <Link to="/destinations" className="bg-gradient-to-br from-primary to-secondary text-white cursor-pointer border-none rounded-md transition-all duration-300 no-underline inline-block font-semibold text-center py-[7px] px-4 text-[0.85rem] hover:opacity-88 hover:-translate-y-px">View Details</Link>
-          </div>
-        </article>
-      </section>
-
-      {/* Features Grid */}
-      <div className="text-center mt-16 mb-8">
-        <h2 className="text-[1.8rem] text-secondary mb-2 font-bold">Why Choose WanderLog?</h2>
-        <p className="text-text-muted text-base">Everything you need for the perfect travel experience</p>
-      </div>
-
-      <section className="flex justify-center flex-wrap gap-10 mt-8 mb-8">
-        <div className="bg-white rounded-[10px] shadow-[0_4px_20px_rgba(102,126,234,0.12)] w-80 overflow-hidden transition-all duration-300 border-2 border-transparent hover:-translate-y-1.5 hover:shadow-[0_12px_30px_rgba(102,126,234,0.22)] hover:border-primary">
-          <div className="py-10 px-8 text-center">
-            <span className="text-[2.8rem] mb-4 block">🗺️</span>
-            <h3 className="text-secondary mb-3 text-[1.15rem] font-semibold">Expert Guides</h3>
-            <p className="text-text-muted text-[0.92rem]">Our certified guides ensure you never miss a hidden gem on your journey.</p>
-          </div>
-        </div>
-        <div className="bg-white rounded-[10px] shadow-[0_4px_20px_rgba(102,126,234,0.12)] w-80 overflow-hidden transition-all duration-300 border-2 border-transparent hover:-translate-y-1.5 hover:shadow-[0_12px_30px_rgba(102,126,234,0.22)] hover:border-primary">
-          <div className="py-10 px-8 text-center">
-            <span className="text-[2.8rem] mb-4 block">📸</span>
-            <h3 className="text-secondary mb-3 text-[1.15rem] font-semibold">Blog and Stories</h3>
-            <p className="text-text-muted text-[0.92rem]">Read and share real travel stories and photography from our community.</p>
-          </div>
-        </div>
-        <div className="bg-white rounded-[10px] shadow-[0_4px_20px_rgba(102,126,234,0.12)] w-80 overflow-hidden transition-all duration-300 border-2 border-transparent hover:-translate-y-1.5 hover:shadow-[0_12px_30px_rgba(102,126,234,0.22)] hover:border-primary">
-          <div className="py-10 px-8 text-center">
-            <span className="text-[2.8rem] mb-4 block">🏷️</span>
-            <h3 className="text-secondary mb-3 text-[1.15rem] font-semibold">Best Prices</h3>
-            <p className="text-text-muted text-[0.92rem]">We compare packages to bring you the most affordable travel options.</p>
-          </div>
-        </div>
-      </section>
-    </main>
-  );
-}
 
 // --- MAIN APP COMPONENT ---
 export default function App() {
   return (
     <Router>
-      <Header />
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/destinations" element={<Destinations />} />
-        <Route path="/features" element={<Features />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-      </Routes>
-      <Footer />
+      <div className="flex flex-col min-h-screen">
+        <Header />
+        <Navbar />
+        <div className="flex-1">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/destinations" element={<Destinations />} />
+            <Route path="/features" element={<Features />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/reviews" element={<Reviews />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/profile" element={<Profile />} />
+          </Routes>
+        </div>
+        <Footer />
+      </div>
     </Router>
   );
 }
